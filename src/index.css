@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply bg-canvas text-ink-900 font-sans antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+  * {
+    border-color: theme('colors.ink.100');
+  }
+  ::selection {
+    @apply bg-accent-200 text-ink-900;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-canvas-card border border-ink-100 rounded-xl shadow-card;
+  }
+  .card-hover {
+    @apply transition-shadow duration-200 hover:shadow-cardhover;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg font-medium text-sm transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn bg-ink-800 text-white hover:bg-ink-700 active:bg-ink-900 px-4 py-2.5 shadow-sm;
+  }
+  .btn-accent {
+    @apply btn bg-accent-500 text-white hover:bg-accent-600 active:bg-accent-600 px-4 py-2.5 shadow-sm;
+  }
+  .btn-ghost {
+    @apply btn text-ink-600 hover:bg-ink-50 hover:text-ink-800 px-3 py-2;
+  }
+  .btn-outline {
+    @apply btn border border-ink-200 bg-white text-ink-700 hover:bg-ink-50 hover:border-ink-300 px-3 py-2;
+  }
+  .input {
+    @apply w-full rounded-lg border border-ink-200 bg-white px-3 py-2 text-sm text-ink-900 placeholder-ink-300 transition-colors focus:border-accent-400 focus:outline-none focus:ring-2 focus:ring-accent-100;
+  }
+  .select {
+    @apply input appearance-none bg-white pr-9 cursor-pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%233d6a96' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.6rem center;
+  }
+  .label {
+    @apply text-xs font-semibold uppercase tracking-wider text-ink-500;
+  }
+  .link {
+    @apply text-accent-600 hover:text-accent-500 underline-offset-2 hover:underline transition-colors;
+  }
+  .skeleton {
+    @apply bg-gradient-to-r from-ink-50 via-ink-100 to-ink-50 bg-[length:1000px_100%] animate-shimmer rounded;
+  }
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: theme('colors.ink.200') transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-ink-200 rounded-full;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .grid-cols-fluid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+}
